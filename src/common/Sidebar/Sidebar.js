@@ -23,8 +23,8 @@ function AdminNavbar(props) {
                 <ul className="nav">
                     {props.routes.map((value, index) => {
                         return(
-                            <li key={index} className={ActiveRoute(value.path)}>
-                                <Nav.Link href={value.path}>
+                            <li key={index} className={ActiveRoute(value.view + value.path)}>
+                                <Nav.Link href={value.view + value.path}>
                                     <i className={value.icon}></i>
                                     <p>{value.name}</p>
                                 </Nav.Link>

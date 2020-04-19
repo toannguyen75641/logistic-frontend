@@ -6,14 +6,16 @@ const Route = [
         path: "/user",
         name: "Người dùng",
         icon: "fa fa-users",
-        component: User
+        component: User,
+        view: "/admin"
     },
     {
         path: "/customer",
         name: "Khách hàng",
         icon: "fa fa-users",
-        component: Customer
-    },
+        component: Customer,
+        view: "/admin"
+    }
 ];
 
 export default Route;

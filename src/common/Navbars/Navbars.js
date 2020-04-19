@@ -10,12 +10,12 @@ function AdminNavbar(props) {
                 <Navbar.Collapse className="justify-content-end">
                     <div>
                         <Nav>
-                            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown title="Tùy chọn" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">Thông báo</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">Thông tin người dùng</NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">Cài đặt</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Đăng Xuất</NavDropdown.Item>
+                                <NavDropdown.Item href="/admin/dang-nhap">Đăng Nhập</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </div>
