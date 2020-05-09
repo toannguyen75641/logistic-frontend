@@ -1,7 +1,7 @@
-import User from './components/User/User.js';
-import Customer from './components/Customer/Customer.js';
+import User from '../components/User/User.js';
+import Customer from '../components/Customer/Customer.js';
 
-const Route = [
+const Routes = [
     {
         path: "/user",
         name: "Người dùng",
@@ -18,4 +18,4 @@ const Route = [
     }
 ];
 
-export default Route;
+export default Routes;

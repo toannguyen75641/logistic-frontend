@@ -1,12 +1,20 @@
 import React from 'react';
 import logo from "../../assets/img/reactlogo.png"
 import { Nav } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
-function ActiveRoute(routeName) {
+const ActiveRoute = (routeName) => {
     return window.location.pathname.indexOf(routeName) > -1 ? "active" : "";
 }
 
-function AdminNavbar(props) {
+
+const AdminNavbar = (props) => {
+    const history = useHistory();
+
+    const handleClick = (routeName) => {
+        history.push(routeName);
+    }
+
     return (
         <div id="sidebar" className="sidebar">
             <div className="logo">
@@ -24,7 +32,7 @@ function AdminNavbar(props) {
                     {props.routes.map((value, index) => {
                         return(
                             <li key={index} className={ActiveRoute(value.view + value.path)}>
-                                <Nav.Link href={value.view + value.path}>
+                                <Nav.Link href={value.view + value.path} onClick={() => handleClick(value.view + value.path)}>
                                     <i className={value.icon}></i>
                                     <p>{value.name}</p>
                                 </Nav.Link>

@@ -1,7 +1,17 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { useHistory } from 'react-router-dom';
+import { removeAuth } from "../../helper/auth";
 
-function AdminNavbar(props) {
+
+const AdminNavbar = (props) => {
+    const history = useHistory();
+
+    const Logout = (event) => {
+        removeAuth();
+        history.push('/admin/login');
+    }
+
     return (
         <Navbar className="navbar-default">
             <Container fluid>
@@ -11,11 +21,11 @@ function AdminNavbar(props) {
                     <div>
                         <Nav>
                             <NavDropdown title="Tùy chọn" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Thông báo</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Thông tin người dùng</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Cài đặt</NavDropdown.Item>
+                                <NavDropdown.Item href="admin/noti">Thông báo</NavDropdown.Item>
+                                <NavDropdown.Item href="admin/profile">Thông tin người dùng</NavDropdown.Item>
+                                <NavDropdown.Item href="admin/setting">Cài đặt</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="/admin/dang-nhap">Đăng Nhập</NavDropdown.Item>
+                                <NavDropdown.Item onClick={Logout}>Đăng Xuất</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </div>

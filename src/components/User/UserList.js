@@ -11,7 +11,7 @@ const tdArray = [
   ["6", "Nguyễn Đức Toàn5", "Tư Vấn Viên"]
 ];
 
-function UserList(props) {
+const UserList = (props) => {
     return (
         <Card
             title = "Danh sách Admin"

@@ -12,7 +12,7 @@ const tdArray = [
   ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
 ];
 
-function CustomerList() {
+const CustomerList = () => {
     return (
         <Card
             title = "Danh sách Khách hàng"

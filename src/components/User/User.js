@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import UserList from "./UserList.js";
 import UserAdd from "./UserAdd.js";
 import { Row, Col, Container } from "react-bootstrap";
 
-function User() {
+const User = () => {
     const [isAddUser, setIsAddUser] = useState(false);
-    const [isEditUser, setIsEditUser] = useState(false);
+    const [isEditUser] = useState(false);
 
     let userForm;
     if(isAddUser || isEditUser) {

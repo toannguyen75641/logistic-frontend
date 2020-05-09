@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Container } from "react-bootstrap";
 import CustomerList from './CustomerList.js';
 
-function Customer() {
+const Customer = () => {
     return (
         <div className="content">
             <Container fluid>

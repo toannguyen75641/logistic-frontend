@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Card from "../../common/Card/Card.js";
 
-function UserAdd() {
+const UserAdd = () => {
     return (
         <Card
             title = "Tạo mới Admin"
