@@ -18,14 +18,14 @@ const AdminNavbar = (props) => {
     return (
         <div id="sidebar" className="sidebar">
             <div className="logo">
-                <a href="." className="simple-text logo-mini">
+                <Nav.Link href="/admin/users" className="simple-text logo-mini">
                     <div className="logo-img">
                         <img src={logo} alt="logo_image" />
                     </div>
-                </a>
-                <a href="." className="simple-text logo-normal">
+                </Nav.Link>
+                <Nav.Link href="/admin/users" className="simple-text logo-normal">
                     Admin Logistic
-                </a>
+                </Nav.Link>
             </div>
             <div className="sidebar-wrapper">
                 <ul className="nav">

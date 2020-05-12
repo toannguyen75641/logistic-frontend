@@ -41,7 +41,7 @@ const GetRoutes = (routes) => {
 const GetTitleName = (routes) => {
     for(var i = 0; i < routes.length; i++) {
         if(window.location.pathname.indexOf(routes[i].path) > -1) {
-            return 'Quản lý ' + routes[i].name;
+            return {name: 'Quản lý ' + routes[i].name, route: routes[i].view + routes[i].path};
         }
     }
     return 'Quản lý Logistic';

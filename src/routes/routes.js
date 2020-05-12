@@ -3,14 +3,14 @@ import Customer from '../components/Customer/Customer.js';
 
 const Routes = [
     {
-        path: "/user",
+        path: "/users",
         name: "Người dùng",
         icon: "fa fa-users",
         component: User,
         view: "/admin"
     },
     {
-        path: "/customer",
+        path: "/customers",
         name: "Khách hàng",
         icon: "fa fa-users",
         component: Customer,

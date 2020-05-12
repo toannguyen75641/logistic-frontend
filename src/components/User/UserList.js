@@ -1,15 +1,6 @@
-import React from 'react';
+import React  from 'react';
 import Card from "../../common/Card/Card.js";
 import { Table, Button } from "react-bootstrap";
-
-const tdArray = [
-  ["1", "Nguyễn Đức Toàn", "Supper Admin"],
-  ["2", "Nguyễn Đức Toàn1", "Tư Vấn Viên"],
-  ["3", "Nguyễn Đức Toàn2", "Quản lý kho"],
-  ["4", "Nguyễn Đức Toàn3", "Tư Vấn Viên"],
-  ["5", "Nguyễn Đức Toàn4", "Quản lý kho"],
-  ["6", "Nguyễn Đức Toàn5", "Tư Vấn Viên"]
-];
 
 const UserList = (props) => {
     return (
@@ -17,7 +8,7 @@ const UserList = (props) => {
             title = "Danh sách Admin"
             category = "Tư vấn viên và quản lý kho"
             create = {true}
-            onClick = {props.onClick}
+            onClick = {props.setAddUser}
             content = {
                 <div className="content">
                     <Table striped hover responsive>
@@ -30,16 +21,16 @@ const UserList = (props) => {
                             </tr>
                             </thead>
                             <tbody>
-                            {tdArray.map((value, key) => {
+                            {props.users.map((value, key) => {
                                 return (
                                     <tr key={key}>
-                                        {value.map((value, key) => {
-                                            return <td key={key}>{value}</td>;
-                                        })}
+                                        <td>{key + 1}</td>
+                                        <td>{value.name}</td>
+                                        <td>{value.mtb_role.name}</td>
                                         <td>
-                                            <Button variant="info">Sửa</Button>
+                                            <Button variant="info" onClick={() => props.editUser(value.id)}>Sửa</Button>
                                             &nbsp;
-                                            <Button variant="danger">Xóa</Button>
+                                            <Button variant="danger" onClick={() => props.deleteUser(value.id)}>Xóa</Button>
                                         </td>
                                     </tr>
                                 );

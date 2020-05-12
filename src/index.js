@@ -6,7 +6,4 @@ import 'font-awesome/css/font-awesome.min.css';
 import './assets/css/admin.css';
 
 
-ReactDOM.render(
-    <Admin></Admin>,
-  document.getElementById('root')
-);
+ReactDOM.render(<Admin/>, document.getElementById('root'));

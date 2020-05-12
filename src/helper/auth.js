@@ -1,5 +1,3 @@
-// import React from 'react';
-
 export const setAuth = (token) => {
     localStorage.setItem('accessToken', token);
 }
@@ -14,4 +12,16 @@ export const removeAuth = () => {
 
 export const getToken = () => {
     return localStorage.getItem('accessToken');
+}
+
+export const setBaseInfo = (info) => {
+    localStorage.setItem('BaseInfo', info);
+}
+
+export const removeBaseInfo = () => {
+    localStorage.removeItem('BaseInfo');
+}
+
+export const getBaseInfo = () => {
+    return localStorage.getItem('BaseInfo');
 }
