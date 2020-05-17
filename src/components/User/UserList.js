@@ -19,9 +19,9 @@ const UserList = (props) => {
                                 <th>Quyền</th>
                                 <th>Hành động</th>
                             </tr>
-                            </thead>
-                            <tbody>
-                            {props.users.map((value, key) => {
+                        </thead>
+                        <tbody>
+                            {props.listUsers.map((value, key) => {
                                 return (
                                     <tr key={key}>
                                         <td>{key + 1}</td>
@@ -30,7 +30,7 @@ const UserList = (props) => {
                                         <td>
                                             <Button variant="info" onClick={() => props.editUser(value.id)}>Sửa</Button>
                                             &nbsp;
-                                            <Button variant="danger" onClick={() => props.deleteUser(value.id)}>Xóa</Button>
+                                            {value.role != 1 && <Button variant="danger" onClick={() => props.deleteUser(value.id)}>Xóa</Button>}
                                         </td>
                                     </tr>
                                 );

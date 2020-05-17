@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import Pagination from '../Pagination/Pagination';
 
 const Card = (props) => {
     return (
@@ -13,6 +14,7 @@ const Card = (props) => {
             {props.content}
             
             <div className="footer">
+                <Pagination/>
             </div>
         </div>
     );
