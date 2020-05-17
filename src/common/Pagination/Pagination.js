@@ -1,32 +1,35 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { Pagination } from "react-bootstrap";
 
+const Paginations = (props) => {
+    const { pagination, onPageChange } = props;
+    const { page, limit, totalRow } = pagination;
+    let totalPages = Math.ceil(totalRow / limit);
+    let item = [];
+    
+    const handlePageChange = (newPage) => {
+        onPageChange(newPage);
+    }
 
-const Pagination = () => {
+    for (let i = 1; i <= totalPages; i++) {
+        item.push(
+            <Pagination.Item 
+                onClick={() => handlePageChange(i)}
+                active={page === i}
+            >{i}</Pagination.Item>
+        );
+    }
+
     return (
-        <Nav>
-            <ul className="pagination">
-                <li className="page-item">
-                    <a href="#" className="page-link">1</a>
-                </li>
-                <li className="page-item">
-                    <a href="#" className="page-link">2</a>
-                </li>
-                <li className="page-item">
-                    <a href="#" className="page-link">3</a>
-                </li>
-                <li className="page-item">
-                    <a href="#" className="page-link">4</a>
-                </li>
-                <li className="page-item">
-                    <a href="#" className="page-link">5</a>
-                </li>
-                <li className="page-item">
-                    <a href="#" className="page-link">6</a>
-                </li>
-            </ul>
-        </Nav>
+        <Pagination className="justify-content-md-center">
+            <Pagination.First disabled={page <= 1} onClick={() => handlePageChange(1)} />
+            <Pagination.Prev disabled={page <= 1} onClick={() => handlePageChange(page - 1)} />
+            {item}
+            <Pagination.Next disabled={page >= totalPages} onClick={() => handlePageChange(page + 1)} />
+            {/* <Pagination.Ellipsis /> */}
+            <Pagination.Last disabled={page >= totalPages} onClick={() => handlePageChange(totalPages)} />
+        </Pagination>
     );
 } 
 
-export default Pagination;
+export default Paginations;
