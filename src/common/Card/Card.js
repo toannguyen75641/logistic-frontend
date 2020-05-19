@@ -4,6 +4,7 @@ import Pagination from '../Pagination/Pagination';
 
 const Card = (props) => {
     const { create, title, category, onClick, content, pagination, onPageChange } = props;
+
     return (
         <div className="card">
             <div className="header">
@@ -15,10 +16,12 @@ const Card = (props) => {
             {content}
             
             <div className="footer">
-                <Pagination 
-                    pagination = {pagination}
-                    onPageChange = {onPageChange}
-                />
+                {pagination && pagination.totalRow > 1 && 
+                    <Pagination 
+                        pagination = {pagination}
+                        onPageChange = {onPageChange}
+                    />
+                }
             </div>
         </div>
     );

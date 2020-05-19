@@ -3,11 +3,11 @@ import Card from "../../common/Card/Card.js";
 import { Table, Button } from "react-bootstrap";
 
 const UserList = (props) => {
-    const { setAddUser, pagination, onPageChange, editUser, deleteUser, listUsers } = props;
+    const { setAddUser, pagination, onPageChange, editUser, deleteUser, listUsers, category, lockUser } = props;
     return (
         <Card
             title = "Danh sách Admin"
-            category = "Tư vấn viên và quản lý kho"
+            category = {"Tổng cộng " + category + " Admin"}
             create = {true}
             onClick = {setAddUser}
             pagination = {pagination}
@@ -31,7 +31,9 @@ const UserList = (props) => {
                                         <td>{value.name}</td>
                                         <td>{value.mtb_role.name}</td>
                                         <td>
-                                            <Button variant="info" onClick={() => editUser(value.id)}>Sửa</Button>
+                                            {value.status !== 0 && <Button variant="info" onClick={() => editUser(value.id)}>Sửa</Button>}
+                                            &nbsp;
+                                            <Button variant='warning' onClick={() => lockUser(value.id)}>Khóa</Button>
                                             &nbsp;
                                             {value.role !== 1 && <Button variant="danger" onClick={() => deleteUser(value.id)}>Xóa</Button>}
                                         </td>

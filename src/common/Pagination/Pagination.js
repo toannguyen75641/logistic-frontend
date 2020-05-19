@@ -13,7 +13,8 @@ const Paginations = (props) => {
 
     for (let i = 1; i <= totalPages; i++) {
         item.push(
-            <Pagination.Item 
+            <Pagination.Item
+                key={i}
                 onClick={() => handlePageChange(i)}
                 active={page === i}
             >{i}</Pagination.Item>

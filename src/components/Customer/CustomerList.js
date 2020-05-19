@@ -3,14 +3,17 @@ import Card from "../../common/Card/Card.js";
 import { Table } from "react-bootstrap";
 
 const CustomerList = (props) => {
+    const { pagination, onPageChange, listCustomers } = props;
     return (
         <Card
             title = "Danh sách Khách hàng"
             category = "Khách hàng thân quen"
+            pagination = {pagination}
+            onPageChange = {onPageChange}
             content = {
                 <div className="content">
                     {
-                        props.listCustomers.length > 0 ? (
+                        listCustomers.length > 0 ? (
                             <Table striped hover>
                                 <thead>
                                     <tr>
@@ -23,7 +26,7 @@ const CustomerList = (props) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {props.listCustomers.map((value, key) => {
+                                    {listCustomers.map((value, key) => {
                                         return (
                                             <tr key={key}>
                                                 <td>{key + 1}</td>
