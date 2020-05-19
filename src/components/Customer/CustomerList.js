@@ -2,43 +2,46 @@ import React from 'react';
 import Card from "../../common/Card/Card.js";
 import { Table } from "react-bootstrap";
 
-const thArray = ["ID", "Name", "Salary", "Country", "City"];
-const tdArray = [
-  ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-  ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-  ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-  ["4", "Philip Chaney", "$38,735", "Korea, South", "Overland Park"],
-  ["5", "Doris Greene", "$63,542", "Malawi", "Feldkirchen in Kärnten"],
-  ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
-];
-
-const CustomerList = () => {
+const CustomerList = (props) => {
     return (
         <Card
             title = "Danh sách Khách hàng"
             category = "Khách hàng thân quen"
             content = {
                 <div className="content">
-                    <Table striped hover>
-                        <thead>
-                            <tr>
-                                {thArray.map((value, key) => {
-                                    return <th key={key}>{value}</th>;
-                                })}
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {tdArray.map((value, key) => {
-                                return (
-                                    <tr key={key}>
-                                        {value.map((value, key) => {
-                                            return <td key={key}>{value}</td>;
-                                        })}
+                    {
+                        props.listCustomers.length > 0 ? (
+                            <Table striped hover>
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Tên</th>
+                                        <th>Email</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Trạng thái đơn hàng</th>
                                     </tr>
-                                );
-                            })}
-                        </tbody>
-                    </Table>
+                                </thead>
+                                <tbody>
+                                    {props.listCustomers.map((value, key) => {
+                                        return (
+                                            <tr key={key}>
+                                                <td>{key + 1}</td>
+                                                <td>{value.name}</td>
+                                                <td>{value.email}</td>
+                                                <td>{value.address}</td>
+                                                <td>{value.telephone}</td>
+                                                <td>{value.order_accept_status}</td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </Table>
+                        ) : (
+                            <h3 className="text-center no-data">Không có dữ liệu</h3>
+                        )
+                    }
+                    
                 </div>
             }
         />

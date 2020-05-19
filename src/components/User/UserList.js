@@ -3,12 +3,15 @@ import Card from "../../common/Card/Card.js";
 import { Table, Button } from "react-bootstrap";
 
 const UserList = (props) => {
+    const { setAddUser, pagination, onPageChange, editUser, deleteUser, listUsers } = props;
     return (
         <Card
             title = "Danh sách Admin"
             category = "Tư vấn viên và quản lý kho"
             create = {true}
-            onClick = {props.setAddUser}
+            onClick = {setAddUser}
+            pagination = {pagination}
+            onPageChange = {onPageChange}
             content = {
                 <div className="content">
                     <Table striped hover responsive>
@@ -19,18 +22,18 @@ const UserList = (props) => {
                                 <th>Quyền</th>
                                 <th>Hành động</th>
                             </tr>
-                            </thead>
-                            <tbody>
-                            {props.users.map((value, key) => {
+                        </thead>
+                        <tbody>
+                            {listUsers.map((value, key) => {
                                 return (
                                     <tr key={key}>
-                                        <td>{key + 1}</td>
+                                        <td>{value.id}</td>
                                         <td>{value.name}</td>
                                         <td>{value.mtb_role.name}</td>
                                         <td>
-                                            <Button variant="info" onClick={() => props.editUser(value.id)}>Sửa</Button>
+                                            <Button variant="info" onClick={() => editUser(value.id)}>Sửa</Button>
                                             &nbsp;
-                                            <Button variant="danger" onClick={() => props.deleteUser(value.id)}>Xóa</Button>
+                                            {value.role !== 1 && <Button variant="danger" onClick={() => deleteUser(value.id)}>Xóa</Button>}
                                         </td>
                                     </tr>
                                 );

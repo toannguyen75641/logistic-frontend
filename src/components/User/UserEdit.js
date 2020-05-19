@@ -16,14 +16,7 @@ const list_role = [
 ];
 
 const UserAdd = (props) => {
-    const initialUser = {
-        id: '',
-        name: '',
-        role: '2',
-        account: '',
-        password: ''
-    }
-    const [user, setUser] = useState(initialUser);
+    const [user, setUser] = useState(props.user);
     const created_by = props.baseInfo.id;
     const accessToken = getToken();
 
@@ -36,8 +29,8 @@ const UserAdd = (props) => {
     }
 
     const onSubmit = async (data) => {
-        let api_url = API_URL + "users/create";
-        const method = "POST";
+        let api_url = API_URL + "users/update?id=" + data.id;
+        const method = "PUT";
         const headers = new Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', accessToken);
@@ -55,7 +48,7 @@ const UserAdd = (props) => {
             const res = await fetch(api_url, {headers});
             const list_users = await res.json();
             props.setListUsers(list_users);
-            props.setAddUser(false);
+            props.setEditUser(false);
         }
         props.setResponse(result);
     }
@@ -76,8 +69,8 @@ const UserAdd = (props) => {
 
     return (
         <Card
-            title = "Tạo mới Admin" 
-            category = "Tạo mới"
+            title = "Cập nhật Admin" 
+            category = "Cập nhật"
             create = {false}
             content = {
                 <div className="content">
@@ -128,7 +121,7 @@ const UserAdd = (props) => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Button className="btn-wd float-left" variant="success" type="submit">Tạo mới</Button>
+                            <Button className="btn-wd float-left" variant="success" type="submit">Cập nhật</Button>
                         </Form.Group>
                     </Form>
                 </div>
