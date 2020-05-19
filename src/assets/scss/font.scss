@@ -1,0 +1,11 @@
+@for $i from 1 through 3 {
+    .text-#{$i} {
+        font-size: 15px * $i;
+    }
+}
+
+@for $width from 10 through 100 {
+    .w-#{$width} {
+        width: $width * 1%;
+    }
+}

@@ -1,0 +1,26 @@
+header {
+    z-index: 1;
+    .nav {
+        cursor: pointer;
+        &.nav-home {
+            border-right: 1px solid $white;
+        }
+    }
+}
+
+main {
+    #background {
+        background-image: url(../img/background.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 70vh;
+    }
+    #bg_form {
+        background-image: url(../img/bg_form.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 70vh;
+    }
+}

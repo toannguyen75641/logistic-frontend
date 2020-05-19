@@ -1,0 +1,10 @@
+@mixin display($d-play, $justify-content, $align-items) {
+    .flex-#{$justify-content} {
+        display: $d-play;
+        justify-content: $justify-content;
+        align-items: $align-items;
+    }
+}
+
+@include display(flex, center, center);
+@include display(flex, space-between, center);
