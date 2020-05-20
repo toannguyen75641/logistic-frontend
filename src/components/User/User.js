@@ -27,7 +27,7 @@ const User = () => {
 
     const fetchUsers = async () => {
         const paramsString = QueryString.stringify(filters);
-        let api_url = API_URL + `users/getAll?${paramsString}`;
+        const api_url = API_URL + `users/getAll?${paramsString}`;
         const headers = new Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', accessToken);
@@ -64,6 +64,27 @@ const User = () => {
         }
     }
 
+    const lockUser = async (id) => {
+        const api_url = API_URL + "users/lock?id=" + id;
+        const method = "PUT";
+        const headers = new Headers();
+        headers.append('Content-type', 'application/json');
+        headers.append('Authorization', accessToken);
+
+        const options = {
+            method,
+            headers
+        }
+
+        const response = await fetch(api_url, options);
+        const result = await response.json();
+        if(!result.error) {
+            setListUsers(listUsers);
+        }
+        setResponse(result);
+
+    }
+
     const deleteUser = async (id) => {
         const api_url = API_URL + "users/delete?id=" + id;
         const method = "DELETE";
@@ -89,9 +110,11 @@ const User = () => {
     if(isEditUser) {
         userForm = <UserEdit 
                         baseInfo={JSON.parse(baseInfo)}
-                        user={user} setEditUser={setEditUser}
+                        user={user}
+                        setEditUser={setEditUser}
                         setListUsers={setListUsers}
                         setResponse={setResponse}
+                        filters={filters}
                     />
     }
     else {
@@ -100,6 +123,7 @@ const User = () => {
                         setAddUser={setAddUser}
                         setListUsers={setListUsers}
                         setResponse={setResponse}
+                        filters={filters}
                     />
     }
 
@@ -114,9 +138,11 @@ const User = () => {
                                 setAddUser={setAddUser}
                                 listUsers={listUsers}
                                 editUser={editUser}
+                                lockUser={lockUser}
                                 deleteUser={deleteUser}
                                 pagination={pagination}
                                 onPageChange={handlePageChange}
+                                category={pagination.totalRow}
                             />
                         ) : (
                             userForm

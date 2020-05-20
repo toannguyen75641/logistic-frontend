@@ -1,6 +1,7 @@
 import React from 'react';
 import AdminNavbar from '../common/Navbars/Navbars.js';
 import Sidebar from '../common/Sidebar/Sidebar.js';
+import Footer from '../common/Footer/Footer.js';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import routes from '../routes/routes';
 import Login from '../components/Auth/Login';
@@ -53,11 +54,14 @@ const Admin = () => {
             <BrowserRouter>
                 <Switch>
                     <LoggedOutRoute exact path = {'/admin/login'} component = {Login} />
-                    <div id="main-panel" className="main-panel">
-                        <Sidebar routes={routes} />
-                        <AdminNavbar titleName={GetTitleName(routes)}></AdminNavbar>
-                        {GetRoutes(routes)}
-                    </div>
+                    <React.Fragment>
+                        <div id="main-panel" className="main-panel">
+                            <Sidebar routes={routes} />
+                            <AdminNavbar titleName={GetTitleName(routes)}></AdminNavbar>
+                            {GetRoutes(routes)}
+                            <Footer/>
+                        </div>
+                    </React.Fragment>
                     {/* <Redirect from="/" to="/admin/dashboard" /> */}
                 </Switch>
             </BrowserRouter>

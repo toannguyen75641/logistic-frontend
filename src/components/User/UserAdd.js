@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import Card from "../../common/Card/Card.js";
 import { getToken } from "../../helper/auth";
 import { API_URL } from "../../global/global";
+import QueryString from 'query-string';
 
 const list_role = [
     {
@@ -16,6 +17,7 @@ const list_role = [
 ];
 
 const UserAdd = (props) => {
+    const { baseInfo, setListUsers, setAddUser, setResponse, filters} = props;
     const initialUser = {
         id: '',
         name: '',
@@ -24,7 +26,7 @@ const UserAdd = (props) => {
         password: ''
     }
     const [user, setUser] = useState(initialUser);
-    const created_by = props.baseInfo.id;
+    const created_by = baseInfo.id;
     const accessToken = getToken();
 
     const handleChange = (event) => {
@@ -51,13 +53,14 @@ const UserAdd = (props) => {
         const response = await fetch(api_url, options);
         const result = await response.json();
         if(result.status === 'success') {
-            api_url = API_URL + "users/getAll";
+            const paramsString = QueryString.stringify(filters);
+            api_url = API_URL + `users/getAll?${paramsString}`;
             const res = await fetch(api_url, {headers});
-            const list_users = await res.json();
-            props.setListUsers(list_users);
-            props.setAddUser(false);
+            const { users } = await res.json();
+            setListUsers(users);
+            setAddUser(false);
         }
-        props.setResponse(result);
+        setResponse(result);
     }
 
     const handleSubmit = (event) => {
