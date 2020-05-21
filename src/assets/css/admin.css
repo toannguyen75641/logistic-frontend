@@ -117,12 +117,12 @@
     transition: all 150ms ease-in;
 }
 
-.sidebar .nav i {
+.sidebar .nav svg {
     font-size: 28px;
     float: left;
     margin-right: 15px;
     line-height: 30px;
-    width: 30px;
+    width: auto;
     text-align: center;
 }
 
@@ -353,4 +353,21 @@
     margin: 10px 3px;
     line-height: 31px;
     font-size: 14px;
+}
+
+/* Error */
+.error .not-found {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 300px;
+    margin: auto 0;
+    color: #848484;
+}
+
+.error .not-found svg {
+    font-size: 112px;
 }

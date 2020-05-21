@@ -1,18 +1,28 @@
 import User from '../components/User/User.js';
 import Customer from '../components/Customer/Customer.js';
+import { faUsersCog } from "@fortawesome/free-solid-svg-icons";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
 
 const Routes = [
     {
         path: "/users",
         name: "Người dùng",
-        icon: "fa fa-users",
+        icon: faUsersCog,
         component: User,
         view: "/admin"
     },
     {
         path: "/customers",
         name: "Khách hàng",
-        icon: "fa fa-users",
+        icon: faUsers,
+        component: Customer,
+        view: "/admin"
+    },
+    {
+        path: "/trucks",
+        name: "Xe tải",
+        icon: faTruck,
         component: Customer,
         view: "/admin"
     }

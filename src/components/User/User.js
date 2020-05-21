@@ -18,7 +18,7 @@ const User = () => {
     const [pagination, setPagination] = useState({
         page: 1,
         limit: LIMIT_OF_PAGE,
-        totalRow: 1
+        totalRow: 0
     });
     const [filters, setFilters] = useState({
         limit: LIMIT_OF_PAGE,

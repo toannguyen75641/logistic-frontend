@@ -2,6 +2,7 @@ import React from 'react';
 import logo from "../../assets/img/reactlogo.png"
 import { Nav } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ActiveRoute = (routeName) => {
     return window.location.pathname.indexOf(routeName) > -1 ? "active" : "";
@@ -33,7 +34,7 @@ const AdminNavbar = (props) => {
                         return(
                             <li key={index} className={ActiveRoute(value.view + value.path)}>
                                 <Nav.Link href={value.view + value.path} onClick={() => handleClick(value.view + value.path)}>
-                                    <i className={value.icon}></i>
+                                    <FontAwesomeIcon icon={value.icon} />
                                     <p>{value.name}</p>
                                 </Nav.Link>
                             </li>
