@@ -3,14 +3,15 @@ import logo from "../../assets/img/reactlogo.png"
 import { Nav } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getBaseInfo } from "../../helper/auth";
 
 const ActiveRoute = (routeName) => {
     return window.location.pathname.indexOf(routeName) > -1 ? "active" : "";
 }
 
-
 const AdminNavbar = (props) => {
     const history = useHistory();
+    const baseInfo = JSON.parse(getBaseInfo());
 
     const handleClick = (routeName) => {
         history.push(routeName);
@@ -21,11 +22,11 @@ const AdminNavbar = (props) => {
             <div className="logo">
                 <Nav.Link href="/admin/users" className="simple-text logo-mini">
                     <div className="logo-img">
-                        <img src={logo} alt="logo_image" />
+                        <img src={ baseInfo.avatar ? baseInfo.avatar : logo } />
                     </div>
                 </Nav.Link>
                 <Nav.Link href="/admin/users" className="simple-text logo-normal">
-                    Admin Logistic
+                    { baseInfo.name }
                 </Nav.Link>
             </div>
             <div className="sidebar-wrapper">

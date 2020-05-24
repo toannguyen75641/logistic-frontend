@@ -22,7 +22,8 @@ const User = () => {
     });
     const [filters, setFilters] = useState({
         limit: LIMIT_OF_PAGE,
-        page: 1
+        page: 1,
+        search: ''
     });
 
     const fetchUsers = async () => {
@@ -47,6 +48,14 @@ const User = () => {
         setFilters({
             ...filters,
             page: newPage
+        })
+    }
+
+    const handleSearchTermChange = (filter) => {
+        setFilters({
+            ...filters,
+            page: 1,
+            search: filter.searchTerm
         })
     }
 
@@ -142,6 +151,7 @@ const User = () => {
                                 deleteUser={deleteUser}
                                 pagination={pagination}
                                 onPageChange={handlePageChange}
+                                onSearchTermChange={handleSearchTermChange}
                                 category={pagination.totalRow}
                             />
                         ) : (

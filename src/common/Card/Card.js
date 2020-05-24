@@ -1,16 +1,22 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import Search from '../Filter/Search';
 import Pagination from '../Pagination/Pagination';
 
 const Card = (props) => {
-    const { create, title, category, onClick, content, pagination, onPageChange } = props;
+    const { create, title, category, onClick, content, pagination, onPageChange, onSearchTermChange } = props;
 
     return (
         <div className="card">
-            <div className="header">
-                {create ? <Button className="btn-wd float-right" variant="info" onClick={() => onClick(true)} >Tạo mới</Button> : '' }
-                <h4 className="title">{title}</h4>
-                <p className="category">{category}</p>
+            <div className="header d-flex justify-content-between">
+                <div className="text-left">
+                    <h4 className="title">{title}</h4>
+                    <p className="category">{category}</p>
+                </div>
+                <div className="text-right">
+                    {create && <Button className="btn-wd float-right" variant="info" onClick={() => onClick(true)} >Tạo mới</Button> }
+                    {create && <Search onSearchTermChange={onSearchTermChange} /> }
+                </div>
             </div>
 
             {content}
@@ -18,8 +24,8 @@ const Card = (props) => {
             <div className="footer">
                 {pagination && pagination.totalRow > 1 && 
                     <Pagination 
-                        pagination = {pagination}
-                        onPageChange = {onPageChange}
+                        pagination={pagination}
+                        onPageChange={onPageChange}
                     />
                 }
             </div>

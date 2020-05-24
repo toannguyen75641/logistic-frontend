@@ -3,7 +3,7 @@ import Card from "../../common/Card/Card.js";
 import { Table, Button } from "react-bootstrap";
 
 const UserList = (props) => {
-    const { setAddUser, pagination, onPageChange, editUser, deleteUser, listUsers, category, lockUser } = props;
+    const { setAddUser, pagination, onPageChange, onSearchTermChange, editUser, deleteUser, listUsers, category, lockUser } = props;
     return (
         <Card
             title = "Danh sách Admin"
@@ -12,6 +12,7 @@ const UserList = (props) => {
             onClick = {setAddUser}
             pagination = {pagination}
             onPageChange = {onPageChange}
+            onSearchTermChange = {onSearchTermChange}
             content = {
                 <div className="content">
                     <Table striped hover responsive>

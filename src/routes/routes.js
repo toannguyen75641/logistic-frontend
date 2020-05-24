@@ -1,8 +1,6 @@
 import User from '../components/User/User.js';
 import Customer from '../components/Customer/Customer.js';
-import { faUsersCog } from "@fortawesome/free-solid-svg-icons";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
-import { faTruck } from "@fortawesome/free-solid-svg-icons";
+import { faUsersCog, faUsers, faTruck } from "@fortawesome/free-solid-svg-icons";
 
 const Routes = [
     {

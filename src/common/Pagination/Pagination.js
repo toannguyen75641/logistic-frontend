@@ -4,15 +4,15 @@ import { Pagination } from "react-bootstrap";
 const Paginations = (props) => {
     const { pagination, onPageChange } = props;
     const { page, limit, totalRow } = pagination;
-    let totalPages = Math.ceil(totalRow / limit);
-    let item = [];
+    let total_pages = Math.ceil(totalRow / limit);
+    let list_page = [];
     
     const handlePageChange = (newPage) => {
         onPageChange(newPage);
     }
 
-    for (let i = 1; i <= totalPages; i++) {
-        item.push(
+    for (let i = 1; i <= total_pages; i++) {
+        list_page.push(
             <Pagination.Item
                 key={i}
                 onClick={() => handlePageChange(i)}
@@ -25,10 +25,10 @@ const Paginations = (props) => {
         <Pagination className="justify-content-md-center">
             <Pagination.First disabled={page <= 1} onClick={() => handlePageChange(1)} />
             <Pagination.Prev disabled={page <= 1} onClick={() => handlePageChange(page - 1)} />
-            {item}
-            <Pagination.Next disabled={page >= totalPages} onClick={() => handlePageChange(page + 1)} />
+            {list_page}
+            <Pagination.Next disabled={page >= total_pages} onClick={() => handlePageChange(page + 1)} />
             {/* <Pagination.Ellipsis /> */}
-            <Pagination.Last disabled={page >= totalPages} onClick={() => handlePageChange(totalPages)} />
+            <Pagination.Last disabled={page >= total_pages} onClick={() => handlePageChange(total_pages)} />
         </Pagination>
     );
 } 
