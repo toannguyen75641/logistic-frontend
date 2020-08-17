@@ -52,15 +52,17 @@ const Admin = () => {
     return (
         <div className="wrapper">
             <BrowserRouter>
-                <LoggedOutRoute exact path = {'/admin/login'} component = {Login} />
-                <React.Fragment>
-                    <div id="main-panel" className="main-panel">
-                        <Sidebar routes={routes} />
-                        <AdminNavbar titleName={GetTitleName(routes)}></AdminNavbar>
-                        {GetRoutes(routes)}
-                        <Footer/>
-                    </div>
-                </React.Fragment>
+                <Switch>
+                    <LoggedOutRoute exact path = {'/admin/login'} component = {Login} />
+                    <React.Fragment>
+                        <div id="main-panel" className="main-panel">
+                            <Sidebar routes={routes} />
+                            <AdminNavbar titleName={GetTitleName(routes)}></AdminNavbar>
+                            {GetRoutes(routes)}
+                            <Footer/>
+                        </div>
+                    </React.Fragment>
+                </Switch>
             </BrowserRouter>
         </div>
     );

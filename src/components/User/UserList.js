@@ -3,7 +3,7 @@ import Card from "../../common/Card/Card.js";
 import { Table, Button } from "react-bootstrap";
 
 const UserList = (props) => {
-    const { setAddUser, pagination, onPageChange, onSearchTermChange, editUser, deleteUser, listUsers, category, lockUser } = props;
+    const { setAddUser, pagination, onPageChange, onSearchTermChange, editUser, deleteUser, listUsers, category, lockUser, baseInfo } = props;
     return (
         <Card
             title = "Danh sách Admin"
@@ -13,6 +13,7 @@ const UserList = (props) => {
             pagination = {pagination}
             onPageChange = {onPageChange}
             onSearchTermChange = {onSearchTermChange}
+            baseInfo = {baseInfo}
             content = {
                 <div className="content">
                     <Table striped hover responsive>
@@ -32,11 +33,11 @@ const UserList = (props) => {
                                         <td>{value.name}</td>
                                         <td>{value.mtb_role.name}</td>
                                         <td>
-                                            {value.status !== 0 && <Button variant="info" onClick={() => editUser(value.id)}>Sửa</Button>}
+                                            {((value.status !== 0 && value.id == baseInfo.id) || value.role !== 1) && <Button variant="info" onClick={() => editUser(value.id)}>Sửa</Button>}
                                             &nbsp;
-                                            <Button variant='warning' onClick={() => lockUser(value.id)}>Khóa</Button>
+                                            {(baseInfo.role === 1) && <Button variant='warning' onClick={() => lockUser(value.id)}>Khóa</Button>}
                                             &nbsp;
-                                            {value.role !== 1 && <Button variant="danger" onClick={() => deleteUser(value.id)}>Xóa</Button>}
+                                            {(baseInfo.role === 1 && value.role !== 1) && <Button variant="danger" onClick={() => deleteUser(value.id)}>Xóa</Button>}
                                         </td>
                                     </tr>
                                 );

@@ -17,13 +17,13 @@ const Routes = [
         component: Customer,
         view: "/admin"
     },
-    {
-        path: "/trucks",
-        name: "Xe tải",
-        icon: faTruck,
-        component: Customer,
-        view: "/admin"
-    }
+    // {
+    //     path: "/trucks",
+    //     name: "Xe tải",
+    //     icon: faTruck,
+    //     component: Customer,
+    //     view: "/admin"
+    // }
 ];
 
 export default Routes;

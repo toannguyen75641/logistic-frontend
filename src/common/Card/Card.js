@@ -4,7 +4,7 @@ import Search from '../Filter/Search';
 import Pagination from '../Pagination/Pagination';
 
 const Card = (props) => {
-    const { create, title, category, onClick, content, pagination, onPageChange, onSearchTermChange } = props;
+    const { create, title, category, onClick, content, pagination, onPageChange, onSearchTermChange, baseInfo } = props;
 
     return (
         <div className="card">
@@ -14,7 +14,7 @@ const Card = (props) => {
                     <p className="category">{category}</p>
                 </div>
                 <div className="text-right">
-                    {create && <Button className="btn-wd float-right" variant="info" onClick={() => onClick(true)} >Tạo mới</Button> }
+                    {(create && baseInfo.role == 1) && <Button className="btn-wd float-right" variant="info" onClick={() => onClick(true)} >Tạo mới</Button> }
                     {create && <Search onSearchTermChange={onSearchTermChange} /> }
                 </div>
             </div>

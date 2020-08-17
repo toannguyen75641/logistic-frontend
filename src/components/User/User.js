@@ -153,6 +153,7 @@ const User = () => {
                                 onPageChange={handlePageChange}
                                 onSearchTermChange={handleSearchTermChange}
                                 category={pagination.totalRow}
+                                baseInfo={JSON.parse(baseInfo)}
                             />
                         ) : (
                             userForm

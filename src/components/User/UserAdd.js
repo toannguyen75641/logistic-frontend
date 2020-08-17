@@ -4,17 +4,7 @@ import Card from "../../common/Card/Card.js";
 import { getToken } from "../../helper/auth";
 import { API_URL } from "../../global/global";
 import QueryString from 'query-string';
-
-const list_role = [
-    {
-        name: 'Cộng tác viên',
-        value: '2'
-    },
-    {
-        name: 'Quản lý kho',
-        value: '3'
-    }
-];
+import ListRole from '../../common/Role/Role';
 
 const UserAdd = (props) => {
     const { baseInfo, setListUsers, setAddUser, setResponse, filters} = props;
@@ -92,7 +82,6 @@ const UserAdd = (props) => {
                                 name="name"
                                 placeholder="Họ và tên"
                                 onChange={handleChange}
-                                value={user.name}
                             />
                         </Form.Group>
                         <Form.Group controlId="role">
@@ -101,9 +90,8 @@ const UserAdd = (props) => {
                                 as="select"
                                 name="role"
                                 onChange={handleChange}
-                                value={user.role}
                             >
-                                {list_role.map((value, key) => {
+                                {ListRole.map((value, key) => {
                                     return (
                                         <option key={key} value={value.value}>{value.name}</option>
                                     );
@@ -117,7 +105,6 @@ const UserAdd = (props) => {
                                 name="account"
                                 placeholder="Tài khoản"
                                 onChange={handleChange}
-                                value={user.account}
                             />
                         </Form.Group>
                         <Form.Group controlId="password">
@@ -127,7 +114,6 @@ const UserAdd = (props) => {
                                 name="password"
                                 placeholder="Mật khẩu"
                                 onChange={handleChange}
-                                value={user.password}
                             />
                         </Form.Group>
                         <Form.Group>

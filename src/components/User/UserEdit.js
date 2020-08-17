@@ -4,17 +4,7 @@ import Card from "../../common/Card/Card.js";
 import { getToken } from "../../helper/auth";
 import { API_URL } from "../../global/global";
 import QueryString from 'query-string';
-
-const list_role = [
-    {
-        name: 'Cộng tác viên',
-        value: '2'
-    },
-    {
-        name: 'Quản lý kho',
-        value: '3'
-    }
-];
+import ListRole from '../../common/Role/Role';
 
 const UserAdd = (props) => {
     const { baseInfo, setListUsers, setEditUser, setResponse, filters} = props;
@@ -96,7 +86,7 @@ const UserAdd = (props) => {
                                 onChange={handleChange}
                                 value={user.role}
                             >
-                                {list_role.map((value, key) => {
+                                {ListRole.map((value, key) => {
                                     return (
                                         <option key={key} value={value.value}>{value.name}</option>
                                     );
